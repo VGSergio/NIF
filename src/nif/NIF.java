@@ -16,12 +16,12 @@ import java.util.Random;
  */
 public final class NIF implements Comparable <NIF>{
 
-    private static final int CANTIDAD = 10000;
+    private static final int AMOUNT = 10000;
     private final int NUM;
-    private final char LETRA;
+    private final char CHAR;
     private static final Random RND = new Random();
-    private static final String LETRAS = "TRWAGMYFPDXBNJZSQVHLCKE";
-    private static final File ARCHIVO = new File ("NIF.txt");
+    private static final String NIF_CHARS = "TRWAGMYFPDXBNJZSQVHLCKE";
+    private static final File FILE = new File ("NIF.txt");
     private static FileWriter FW;
     private static BufferedWriter BW;
     
@@ -30,7 +30,7 @@ public final class NIF implements Comparable <NIF>{
      * @throws java.io.IOException
      */
     public static void main(String[] args) throws IOException {
-        NIF[] NIF = new NIF[CANTIDAD];
+        NIF[] NIF = new NIF[AMOUNT];
         int i;
         
         for (i=0; i < NIF.length; i++){
@@ -38,7 +38,7 @@ public final class NIF implements Comparable <NIF>{
         }
         
         Arrays.sort(NIF);
-        FW = new FileWriter (ARCHIVO);
+        FW = new FileWriter (FILE);
         BW = new BufferedWriter(FW);
         
         for (i=0; i< NIF.length; i++){
@@ -56,15 +56,15 @@ public final class NIF implements Comparable <NIF>{
      */
     public NIF() {
         NUM = RND.nextInt(10000000);
-        LETRA = getLETRA();
+        CHAR = get_Char();
     }
 
     /**
      * Calculates the specific control char of a given NIF number.
      * @return 
      */
-    public char getLETRA() {
-        return LETRAS.charAt(NUM%23);
+    public char get_Char() {
+        return NIF_CHARS.charAt(NUM%23);
     }
     
     @Override
@@ -75,7 +75,6 @@ public final class NIF implements Comparable <NIF>{
     @Override
     public String toString(){
         String f = String.format("%08d", NUM);
-        String s = f + LETRA;
-        return s;
+        return f.concat(String.valueOf(CHAR));
     }
 }
