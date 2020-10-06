@@ -55,7 +55,7 @@ public final class NIF implements Comparable <NIF>{
      * and gets the control character for the generated number
      */
     public NIF() {
-        NUM = RND.nextInt(10000000);
+        NUM = RND.nextInt(100000000);
         CHAR = get_Char();
     }
 
