@@ -1,5 +1,5 @@
 /*
- * Program that generates as many NIFs as indicated in <int CANTIDAD> and stores
+ * Program that generates as many NIFs as indicated in <int AMOUNT> and stores
  * them at NIF.txt sorted by number.
 */
 package nif;
